@@ -2,7 +2,7 @@ const express = require("express");
 const {PORT} = require("./config/serverConfig");
 const bodyParser = require("body-parser");
 const ApiRoutes = require('./routes/index.js');
-const {Airport,City} = require("./models/index.js");
+const {Airport,City,Airplane} = require("./models/index.js");
 const db = require('./models/index.js');
 
 const  setupAndStartServer = async()=>{
@@ -17,6 +17,9 @@ const  setupAndStartServer = async()=>{
       db.sequelize.sync({alter : true});
     }
 
+
+
+    /***************************************************
     const city = await City.findOne({
         where : {
            id : 6
@@ -37,6 +40,7 @@ const  setupAndStartServer = async()=>{
     });
     await city.addAirport(newAirport)
     console.log(airports); 
+    **********************************************************************/
   })
 }
 setupAndStartServer();
