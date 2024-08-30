@@ -61,6 +61,22 @@ class FlightRepository {
         }
     } 
 
+    async update(id,data){    // To fetch an particular Flight
+        try {
+            const response = await Flight.update(data,
+                {
+                  where : {
+                    id : id
+                  }
+                }
+            );
+            return response;
+        } catch (error) {
+            console.log("Something went wrong in flight repository");
+            throw {error};
+        }
+    } 
+
 }
 
 module.exports = {

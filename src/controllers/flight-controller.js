@@ -96,8 +96,38 @@ const getAll = async(req,res)=>{
     }
 }
 
+const patch = async(req,res)=>{
+    try {
+        console.log(req.body,req.params)
+        const flight = await flightService.updateFlights(req.params.id,req.body);
+        return res
+        .status(201)
+        .json(
+            {
+                data : flight,
+                success : true,
+                message : "Successfully updated the flight",
+                err : {}
+            }
+        )
+    } catch (error) {
+        console.log("Something went wrong in flight controller");
+        return res
+        .status(500)
+        .json(
+            {
+                data : {},
+                success : false,
+                message : "Not able to fetch the flights",
+                err : error
+            }
+        )
+    }
+}
+
 module.exports={
   create,
   get,
-  getAll
+  getAll,
+  patch
 }
